@@ -1,0 +1,59 @@
+Overview
+
+In real cloud and virtual machine environments, engineers are often responsible for preparing servers before any orchestration, CI/CD, or application logic is introduced.
+This exercise simulates that responsibility by setting up a service-style directory under /opt, owned by a dedicated user and managed through a Bash deployment script rather than manual configuration.
+
+The emphasis throughout was on:
+- correctness over convenience
+- repeatability over one-off setup
+- clarity of system design
+
+Environment
+OS: Ubuntu (local / WSL)
+Shell: Bash
+Scope: Linux foundations and system preparation
+
+What This Demonstrates
+- User & Permission Discipline
+- Creation of a dedicated service user
+- Controlled administrative access via sudo
+- Ownership and permission enforcement based on least-privilege principles
+
+Filesystem Structure
+
+/opt/myapp/
+├── scripts/    # automation bootstrap
+├── app/        # application files
+├── logs/       # operational logs
+└── backups/    # backup artifacts
+
+
+- /opt was chosen intentionally to align with Linux filesystem conventions
+- Clear separation of automation, runtime data, and logs
+
+Automation
+Bash deployment script stored in /opt/myapp/scripts
+
+Script responsibilities:
+- Create required directories from a clean state
+- Apply correct ownership and permissions
+- Safely copy application files using rsync
+- Log execution output for traceability
+- Script was designed to be idempotent and safe to rerun
+
+Validation
+- Environment tested from a clean state
+- Manual setup removed before execution
+- Final structure, permissions, and logs verified using standard Linux tools
+
+Why This Matters
+While simple in scope, this exercise reflects real operational concerns:
+- Services should not run as root
+- Manual setup does not scale
+- Permissions are part of system design, not an afterthought
+- Clean structure reduces operational risk
+- Automation must be repeatable and auditable
+These fundamentals underpin cloud provisioning, CI/CD pipelines, and configuration management workflows.
+
+This repository represents a learning milestone rather than a production system.
+The goal is to demonstrate discipline, understanding, and correct habits at the Linux layer.
