@@ -8,7 +8,7 @@ DEST_DIR="$DIRECTORY/backups"
 BACKUP_FILE="$DEST_DIR/$(basename "$DIRECTORY")_backup_$(date +%F).tar.gz"
 
 
-if [ ! -d "$BACKUP_DIR" ]; then
+if [ ! -f "$BACKUP_DIR" ]; then
         echo "$BACKUP_DIR not found, so $LOG_FILE cannot be created!" >&2
         exit 1
 else
