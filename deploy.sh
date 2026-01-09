@@ -8,7 +8,7 @@ LOGS_DIR="$ROOT_DIRECTORY/logs"
 BACKUPS_DIR="$ROOT_DIRECTORY/backups"
 LOG_FILE="$LOGS_DIR/deploy.log"
 
-if [ ! -f "$ROOT_DIRECTORY" ]; then
+if [ ! -d "$ROOT_DIRECTORY" ]; then
         echo "The root directory $ROOT_DIRECTORY does not exist..." >&2
         exit 1
 fi
